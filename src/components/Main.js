@@ -5,16 +5,18 @@ import { useState } from 'react';
 
 function Main() {
 
-    const [newNotes, setNewNotes] = useState([]);
-    function addNote(newNote) {
-        setNewNotes(prev => [...prev, newNote]);
+    const [notes, setNotes] = useState([]);
+    function addNote(note) {
+        setNotes(prev => [...prev, note]);
     }
-
+    function deleteNote(id) {
+        setNotes(prev => prev.filter((_,index)=>index !== id))
+    }
     return (
 
         <div>
             <CreateArea addNote={addNote} />
-            {newNotes.map((note, index) => <Note note={note} key={index} />)}
+            {notes.map((note, index) => <Note note={note} key={index} id={index} deleteNote={deleteNote} />)}
         </div>
     );
 }

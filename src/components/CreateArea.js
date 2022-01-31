@@ -8,6 +8,7 @@ function CreateArea(props) {
         title: '',
         content: ''
     });
+
     function handleChange(event) {
         const { name, value } = event.target;
         setNote(prev => ({ ...prev, [name]: value }))
@@ -17,6 +18,7 @@ function CreateArea(props) {
         addNote(note);
         event.preventDefault();
     }
+    
     return (
         <div>
             <form>
