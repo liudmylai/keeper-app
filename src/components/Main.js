@@ -1,10 +1,20 @@
 import Note from "./Note";
+import CreateArea from './CreateArea';
+import { useState } from 'react';
 
-function Main(props) {
-    const {notes} = props;
+
+function Main() {
+
+    const [newNotes, setNewNotes] = useState([]);
+    function addNote(newNote) {
+        setNewNotes(prev => [...prev, newNote]);
+    }
+
     return (
+
         <div>
-            {notes.map((note, index) => <Note note={note} key={index} />)}
+            <CreateArea addNote={addNote} />
+            {newNotes.map((note, index) => <Note note={note} key={index} />)}
         </div>
     );
 }
